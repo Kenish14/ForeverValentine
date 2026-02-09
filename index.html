@@ -1,186 +1,186 @@
-<DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8" />
 
-  <!-- FULL SCREEN MOBILE -->
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <!-- FULL SCREEN MOBILE -->
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
 
-  <title>Forever Valentine 💜</title>
+  <title>Forever Valentine 💜</title>
 
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
-  <style>
-    :root {
-      --bg1: #e6e0ff;
-      --bg2: #f5f0ff;
-      --card-bg: rgba(255,255,255,0.92);
-      --gradient: linear-gradient(120deg, #c084fc, #a78bfa, #f0abfc);
-      --yes: #7c3aed;
-      --yesHover: #6d28d9;
-    }
+  <style>
+    :root {
+      --bg1: #e6e0ff;
+      --bg2: #f5f0ff;
+      --card-bg: rgba(255,255,255,0.92);
+      --gradient: linear-gradient(120deg, #c084fc, #a78bfa, #f0abfc);
+      --yes: #7c3aed;
+      --yesHover: #6d28d9;
+    }
 
-    * {
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      min-height: 100svh;
-      display: grid;
-      place-items: center;
-      background: radial-gradient(circle at top, var(--bg2), var(--bg1));
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      overflow: hidden;
-      padding:
-        env(safe-area-inset-top)
-        env(safe-area-inset-right)
-        env(safe-area-inset-bottom)
-        env(safe-area-inset-left);
-      touch-action: manipulation;
-    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle at top, var(--bg2), var(--bg1));
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      overflow: hidden;
+      padding:
+        env(safe-area-inset-top)
+        env(safe-area-inset-right)
+        env(safe-area-inset-bottom)
+        env(safe-area-inset-left);
+      touch-action: manipulation;
+    }
 
-    /* FLOATING HEARTS */
-    .heart {
-      position: fixed;
-      bottom: -40px;
-      font-size: 22px;
-      animation: floatUp linear infinite;
-      opacity: 0.7;
-      pointer-events: none;
-    }
+    /* FLOATING HEARTS */
+    .heart {
+      position: fixed;
+      bottom: -40px;
+      font-size: 22px;
+      animation: floatUp linear infinite;
+      opacity: 0.7;
+      pointer-events: none;
+    }
 
-    @keyframes floatUp {
-      from {
-        transform: translateY(0) scale(0.8);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(-120vh) scale(1.3);
-        opacity: 1;
-      }
-    }
+    @keyframes floatUp {
+      from {
+        transform: translateY(0) scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(-120vh) scale(1.3);
+        opacity: 1;
+      }
+    }
 
-    #confettiCanvas {
-      position: fixed;
-      inset: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      z-index: 999;
-    }
+    #confettiCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 999;
+    }
 
-    /* GRADIENT BORDER */
-    .card-wrapper {
-      padding: 4px;
-      border-radius: 28px;
-      background: var(--gradient);
-      animation: borderMove 6s linear infinite;
-    }
+    /* GRADIENT BORDER */
+    .card-wrapper {
+      padding: 4px;
+      border-radius: 28px;
+      background: var(--gradient);
+      animation: borderMove 6s linear infinite;
+    }
 
-    @keyframes borderMove {
-      from { filter: hue-rotate(0deg); }
-      to { filter: hue-rotate(360deg); }
-    }
+    @keyframes borderMove {
+      from { filter: hue-rotate(0deg); }
+      to { filter: hue-rotate(360deg); }
+    }
 
-    .card {
-      width: min(760px, 94vw);
-      padding: 26px 22px;
-      background: var(--card-bg);
-      backdrop-filter: blur(12px);
-      border-radius: 24px;
-      text-align: center;
-      box-shadow: 0 20px 60px rgba(0,0,0,.15);
-    }
+    .card {
+      width: min(760px, 94vw);
+      padding: 26px 22px;
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border-radius: 24px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,.15);
+    }
 
-    .love-text {
-      font-size: clamp(14px, 2.8vw, 16px);
-      line-height: 1.65;
-      color: #374151;
-      margin-bottom: 22px;
-    }
+    .love-text {
+      font-size: clamp(14px, 2.8vw, 16px);
+      line-height: 1.65;
+      color: #374151;
+      margin-bottom: 22px;
+    }
 
-    h1 {
-      font-size: clamp(24px, 4.5vw, 40px);
-      margin: 10px 0 16px;
-    }
+    h1 {
+      font-size: clamp(24px, 4.5vw, 40px);
+      margin: 10px 0 16px;
+    }
 
-    .button-zone {
-      position: relative;
-      width: min(520px, 92%);
-      height: 120px;
-      margin: 0 auto;
-    }
+    .button-zone {
+      position: relative;
+      width: min(520px, 92%);
+      height: 120px;
+      margin: 0 auto;
+    }
 
-    button {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      padding: 16px 30px;
-      font-size: 18px;
-      font-weight: 800;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 10px 24px rgba(0,0,0,.14);
-      transition: transform .2s ease, background .2s ease;
-    }
+    button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 16px 30px;
+      font-size: 18px;
+      font-weight: 800;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(0,0,0,.14);
+      transition: transform .2s ease, background .2s ease;
+    }
 
-    #yesBtn {
-      left: 10%;
-      background: #e5e7eb;
-      color: #111827;
-    }
+    #yesBtn {
+      left: 10%;
+      background: #e5e7eb;
+      color: #111827;
+    }
 
-    #bigYesBtn {
-      left: 55%;
-      background: var(--yes);
-      color: #fff;
-    }
+    #bigYesBtn {
+      left: 55%;
+      background: var(--yes);
+      color: #fff;
+    }
 
-    #bigYesBtn:hover {
-      background: var(--yesHover);
-      transform: translateY(-50%) scale(1.08);
-    }
+    #bigYesBtn:hover {
+      background: var(--yesHover);
+      transform: translateY(-50%) scale(1.08);
+    }
 
-    .result {
-      display: none;
-      margin-top: 22px;
-      animation: pop .4s ease;
-    }
+    .result {
+      display: none;
+      margin-top: 22px;
+      animation: pop .4s ease;
+    }
 
-    .result h2 {
-      font-size: clamp(30px, 4.5vw, 46px);
-    }
+    .result h2 {
+      font-size: clamp(30px, 4.5vw, 46px);
+    }
 
-    .ready-text {
-      font-size: clamp(18px, 3.8vw, 24px);
-      font-weight: 700;
-      color: #7c3aed;
-      margin: 12px 0 18px;
-      animation: pulse 1.6s ease-in-out infinite;
-    }
+    .ready-text {
+      font-size: clamp(18px, 3.8vw, 24px);
+      font-weight: 700;
+      color: #7c3aed;
+      margin: 12px 0 18px;
+      animation: pulse 1.6s ease-in-out infinite;
+    }
 
-    @keyframes pulse {
-      0% { transform: scale(1); opacity: 0.9; }
-      50% { transform: scale(1.06); opacity: 1; }
-      100% { transform: scale(1); opacity: 0.9; }
-    }
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.06); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.9; }
+    }
 
-    @keyframes pop {
-      from { transform: scale(.95); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
+    @keyframes pop {
+      from { transform: scale(.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
 
-    .fireworks {
-      width: min(360px, 90vw);
-      margin: 0 auto;
-      display: block;
-    }
-  </style>
+    .fireworks {
+      width: min(360px, 90vw);
+      margin: 0 auto;
+      display: block;
+    }
+  </style>
 </head>
 
 <body>
@@ -189,88 +189,88 @@
 
 <!-- FLOATING HEARTS -->
 <script>
-  const hearts = ["💜","💖","💗","💙"];
-  for (let i = 0; i < 20; i++) {
-    const h = document.createElement("div");
-    h.className = "heart";
-    h.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-    h.style.left = Math.random() * 100 + "vw";
-    h.style.animationDuration = 6 + Math.random() * 6 + "s";
-    h.style.fontSize = 18 + Math.random() * 26 + "px";
-    document.body.appendChild(h);
-  }
+  const hearts = ["💜","💖","💗","💙"];
+  for (let i = 0; i < 20; i++) {
+    const h = document.createElement("div");
+    h.className = "heart";
+    h.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.animationDuration = 6 + Math.random() * 6 + "s";
+    h.style.fontSize = 18 + Math.random() * 26 + "px";
+    document.body.appendChild(h);
+  }
 </script>
 
 <div class="card-wrapper">
-  <main class="card">
+  <main class="card">
 
-    <p class="love-text">
-      One day we will be quiet together—older, softened by time, our hands remembering every version of us they've ever held.
-      We will sit near water the way people sit near truth, and the world will feel far away in the best way.
-      Not because life was gentle, but because we learned how to be.
-      We will look back at the hard seasons and realize they did not defeat us; they only made room for the kind of love that stays.
-      <br><br>
-      And I will tell you what I have tried to say a hundred different ways: you were the turning point.
-      You were the steadiness when I was shaking, the light when my faith went dim, the home I kept finding my way back to.
-      If my life is a story worth rereading, it is because your love wrote warmth into the margins.
-      Thank you—for choosing me on the ordinary days, for staying when it would've been easier to leave,
-      for giving us the best of you until "us" became a place I could finally breathe.
-    </p>
+    <p class="love-text">
+      One day we will be quiet together—older, softened by time, our hands remembering every version of us they've ever held.
+      We will sit near water the way people sit near truth, and the world will feel far away in the best way.
+      Not because life was gentle, but because we learned how to be.
+      We will look back at the hard seasons and realize they did not defeat us; they only made room for the kind of love that stays.
+      <br><br>
+      And I will tell you what I have tried to say a hundred different ways: you were the turning point.
+      You were the steadiness when I was shaking, the light when my faith went dim, the home I kept finding my way back to.
+      If my life is a story worth rereading, it is because your love wrote warmth into the margins.
+      Thank you—for choosing me on the ordinary days, for staying when it would've been easier to leave,
+      for giving us the best of you until "us" became a place I could finally breathe.
+    </p>
 
-    <h1>Will you be my valentine today and forever? 💜</h1>
+    <h1>Will you be my valentine today and forever? 💜</h1>
 
-    <section class="button-zone" id="zone">
-      <button id="yesBtn">Yes</button>
-      <button id="bigYesBtn">A BIG YES</button>
-    </section>
+    <section class="button-zone" id="zone">
+      <button id="yesBtn">Yes</button>
+      <button id="bigYesBtn">A BIG YES</button>
+    </section>
 
-    <section class="result" id="result">
-      <h2>YAY! 🎉💖</h2>
-      <p class="ready-text">Get ready for the Valentine’s Day!! 💕</p>
-      <img class="fireworks"
-           src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif"
-           alt="Fireworks" />
-    </section>
+    <section class="result" id="result">
+      <h2>YAY! 🎉💖</h2>
+      <p class="ready-text">Get ready for the Valentine’s Day!! 💕</p>
+      <img class="fireworks"
+           src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif"
+           alt="Fireworks" />
+    </section>
 
-  </main>
+  </main>
 </div>
 
 <script>
-  const yesBtn = document.getElementById("yesBtn");
-  const bigYesBtn = document.getElementById("bigYesBtn");
-  const zone = document.getElementById("zone");
-  const result = document.getElementById("result");
-  const canvas = document.getElementById("confettiCanvas");
+  const yesBtn = document.getElementById("yesBtn");
+  const bigYesBtn = document.getElementById("bigYesBtn");
+  const zone = document.getElementById("zone");
+  const result = document.getElementById("result");
+  const canvas = document.getElementById("confettiCanvas");
 
-  function resizeCanvas() {
-    const dpr = window.devicePixelRatio || 1;
-    canvas.width = window.innerWidth * dpr;
-    canvas.height = window.innerHeight * dpr;
-  }
+  function resizeCanvas() {
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+  }
 
-  resizeCanvas();
-  window.addEventListener("resize", resizeCanvas);
+  resizeCanvas();
+  window.addEventListener("resize", resizeCanvas);
 
-  const confettiInstance = confetti.create(canvas, { resize: false });
+  const confettiInstance = confetti.create(canvas, { resize: false });
 
-  function celebrate() {
-    zone.style.display = "none";
-    result.style.display = "block";
+  function celebrate() {
+    zone.style.display = "none";
+    result.style.display = "block";
 
-    const end = Date.now() + 1600;
-    (function frame() {
-      confettiInstance({
-        particleCount: 14,
-        spread: 120,
-        startVelocity: 45,
-        origin: { x: Math.random(), y: Math.random() * 0.4 }
-      });
-      if (Date.now() < end) requestAnimationFrame(frame);
-    })();
-  }
+    const end = Date.now() + 1600;
+    (function frame() {
+      confettiInstance({
+        particleCount: 14,
+        spread: 120,
+        startVelocity: 45,
+        origin: { x: Math.random(), y: Math.random() * 0.4 }
+      });
+      if (Date.now() < end) requestAnimationFrame(frame);
+    })();
+  }
 
-  yesBtn.onclick = celebrate;
-  bigYesBtn.onclick = celebrate;
+  yesBtn.onclick = celebrate;
+  bigYesBtn.onclick = celebrate;
 </script>
 
 </body>
